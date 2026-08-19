@@ -52,7 +52,7 @@
                 <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner">
                     <i class="fa-solid fa-house-chimney-window text-3xl text-white"></i>
                 </div>
-                <h2 class="text-2xl font-bold">Cempaka Bersinar RT 003 / RW 006</h2>
+                <h2 class="text-2xl font-bold">WargaKu RT003 / RW006</h2>
                 <p class="text-xs text-sky-100 mt-1">Sistem Informasi Warga & Kas Digital QRIS</p>
             </div>
 
@@ -71,29 +71,7 @@
                     </button>
                 </form>
 
-                <!-- Quick Demo Login Helpers -->
-                <div class="pt-3 border-t border-slate-100">
-                    <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center">Uji Coba Cepat (Demo Accounts)</p>
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <button onclick="demoLogin('pengurus')" class="p-2.5 bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 rounded-xl text-left font-medium transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-user-shield text-amber-600 text-base"></i>
-                            <div>
-                                <p class="font-bold">Pengurus RT</p>
-                                <p class="text-[10px] text-amber-600">Akses Penuh</p>
-                            </div>
-                        </button>
-                        <button onclick="demoLogin('w1')" class="p-2.5 bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100 rounded-xl text-left font-medium transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-user text-sky-600 text-base"></i>
-                            <div>
-                                <p class="font-bold">Warga (A-01)</p>
-                                <p class="text-[10px] text-sky-600">Ahmad Subagyo</p>
-                            </div>
-                        </button>
-                        <button onclick="demoLogin('w2')" class="p-2.5 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 rounded-xl text-left font-medium transition-all flex items-center gap-2 col-span-2">
-                            <i class="fa-solid fa-user text-emerald-600 text-base"></i>
-                            <div>
-                                <p class="font-bold">Warga (A-02) - Budi Santoso</p>
-                                <p class="text-[10px] text-emerald-600">Lihat & Edit Profil Keluarga + Laporan Kas</p>
+                
                             </div>
                         </button>
                     </div>
@@ -155,7 +133,7 @@
                     <span id="pendingBadge" class="bg-amber-500 text-slate-900 font-bold text-xs px-2 py-0.5 rounded-full hidden">0</span>
                 </button>
                 <button onclick="switchTab('pengaturan')" id="nav-pengaturan" class="nav-btn pengurus-only w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-all">
-                    <i class="fa-solid fa-gear w-5"></i> Pengaturan QRIS
+                    <i class="fa-solid fa-gear w-5"></i> Pengaturan Aplikasi
                 </button>
             </nav>
         </div>
@@ -298,7 +276,7 @@
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
                             <h3 class="font-bold text-slate-800 text-lg">Daftar Seluruh Data Warga RT 05</h3>
-                            <p class="text-xs text-slate-500">Kelola informasi keluarga, nomor KK, anggota, dan dokumen warga</p>
+                            <p class="text-xs text-slate-500">Kelola informasi keluarga, nomor KK, PIN akun, dan dokumen warga</p>
                         </div>
                         <button onclick="openModalAddWarga()" class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-md transition-all flex items-center gap-2">
                             <i class="fa-solid fa-user-plus"></i> Tambah Warga Baru
@@ -352,7 +330,7 @@
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 <button onclick="editMyFamilyProfile()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow">
-                                    <i class="fa-solid fa-pen-to-square"></i> Edit Data Keluarga Saya
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit Profil & PIN Login
                                 </button>
                                 <button id="btnViewMyKK" onclick="viewMyKKPhoto()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
                                     <i class="fa-solid fa-id-card"></i> Lihat Kartu Keluarga
@@ -492,47 +470,77 @@
                 </div>
             </section>
 
-            <!-- TAB 6: PENGATURAN QRIS (PENGURUS ONLY) -->
+            <!-- TAB 6: PENGATURAN QRIS & AKUN ADMIN (PENGURUS ONLY) -->
             <section id="tab-pengaturan" class="tab-content space-y-6 hidden pengurus-only">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5 max-w-2xl">
-                    <div>
-                        <h3 class="font-bold text-slate-800 text-lg">Pengaturan QRIS Statis & Kas RT</h3>
-                        <p class="text-xs text-slate-500">Unggah foto kode QRIS Statis RT, atur nama merchant, dan tarif iuran bulanan</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    
+                    <!-- Form 1: Pengaturan Akun Admin / Pengurus -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <div class="border-b border-slate-100 pb-3">
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-user-shield text-amber-600"></i> Akun Login Pengurus RT
+                            </h3>
+                            <p class="text-xs text-slate-500">Ubah Username dan Kata Sandi / PIN untuk login Pengurus</p>
+                        </div>
+                        <form onsubmit="saveAdminCredentials(event)" class="space-y-4 text-xs">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Username Pengurus</label>
+                                <input type="text" id="adminUsernameInput" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none" required>
+                                <p class="text-[10px] text-slate-400 mt-1">Gunakan username ini saat login sebagai Pengurus.</p>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Kata Sandi / PIN Pengurus</label>
+                                <input type="password" id="adminPasswordInput" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none" required>
+                            </div>
+                            <button type="submit" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold shadow-md transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-key"></i> Simpan Akses Pengurus
+                            </button>
+                        </form>
                     </div>
-                    <form onsubmit="saveSettings(event)" class="space-y-4 text-xs">
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Nama Merchant / Pengurus RT</label>
-                            <input type="text" id="qrisMerchantName" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Tarif Standar Iuran Bulanan (Rp)</label>
-                            <input type="number" id="qrisStandardFee" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Informasi Transfer Bank / Rekening alternatif</label>
-                            <input type="text" id="qrisBankInfo" placeholder="e.g. Bank BCA: 8820-1234-99 a/n Bendahara RT 05" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none">
-                        </div>
 
-                        <!-- QRIS Statis Upload Box -->
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1.5">Unggah Foto Kode QRIS Statis RT</label>
-                            <div class="flex flex-col sm:flex-row items-center gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl">
-                                <div class="w-36 h-36 border border-slate-200 rounded-xl overflow-hidden bg-white flex items-center justify-center flex-shrink-0 p-2 shadow-inner">
-                                    <img id="qrisPreviewImg" src="" alt="Preview QRIS" class="max-w-full max-h-full object-contain">
-                                </div>
-                                <div class="space-y-2 text-xs flex-1">
-                                    <label class="block font-semibold text-slate-700">Pilih Berkas Foto QRIS (PNG / JPG)</label>
-                                    <input type="file" id="qrisFileInput" accept="image/*" onchange="handleQRISFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-100 file:text-sky-700 hover:file:bg-sky-200 cursor-pointer">
-                                    <p class="text-[11px] text-slate-400 leading-relaxed">Unggah file QRIS Statis resmi dari bank/e-wallet RT. Gambar ini akan langsung tampil saat warga menekan tombol pembayaran iuran.</p>
-                                    <input type="hidden" id="qrisImageUrl">
+                    <!-- Form 2: Pengaturan QRIS & Tarif Kas -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <div class="border-b border-slate-100 pb-3">
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-qrcode text-emerald-600"></i> Pengaturan QRIS & Kas RT
+                            </h3>
+                            <p class="text-xs text-slate-500">Unggah foto QRIS Statis RT & atur nominal iuran bulanan</p>
+                        </div>
+                        <form onsubmit="saveSettings(event)" class="space-y-4 text-xs">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Nama Merchant / Pengurus RT</label>
+                                <input type="text" id="qrisMerchantName" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Tarif Standar Iuran Bulanan (Rp)</label>
+                                <input type="number" id="qrisStandardFee" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Informasi Transfer Bank / Rekening alternatif</label>
+                                <input type="text" id="qrisBankInfo" placeholder="e.g. Bank BCA: 8820-1234-99 a/n Bendahara RT 05" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                            </div>
+
+                            <!-- QRIS Statis Upload Box -->
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1.5">Unggah Foto Kode QRIS Statis RT</label>
+                                <div class="flex flex-col sm:flex-row items-center gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+                                    <div class="w-28 h-28 border border-slate-200 rounded-xl overflow-hidden bg-white flex items-center justify-center flex-shrink-0 p-2 shadow-inner">
+                                        <img id="qrisPreviewImg" src="" alt="Preview QRIS" class="max-w-full max-h-full object-contain">
+                                    </div>
+                                    <div class="space-y-2 text-xs flex-1">
+                                        <label class="block font-semibold text-slate-700">Pilih Berkas Foto QRIS (PNG / JPG)</label>
+                                        <input type="file" id="qrisFileInput" accept="image/*" onchange="handleQRISFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-100 file:text-sky-700 hover:file:bg-sky-200 cursor-pointer">
+                                        <input type="hidden" id="qrisImageUrl">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <button type="submit" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-floppy-disk"></i> Simpan Pengaturan QRIS
-                        </button>
-                    </form>
+                            <button type="submit" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-floppy-disk"></i> Simpan Pengaturan QRIS
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </section>
 
@@ -637,12 +645,12 @@
                 <input type="hidden" id="wargaId">
                 <input type="hidden" id="wargaFotoKKBase64">
 
-                <!-- Section 1: Data Utama Kepala Keluarga -->
+                <!-- Section 1: Data Utama Kepala Keluarga & Akses Login -->
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-3 border-b border-slate-100 pb-1">1. Informasi Utama Warga</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-3 border-b border-slate-100 pb-1">1. Informasi Utama & Akun Login Warga</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">No. Rumah / Blok <span class="text-rose-500">*</span></label>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">No. Rumah / Blok (Username) <span class="text-rose-500">*</span></label>
                             <input type="text" id="wargaNoRumah" placeholder="e.g. A-12" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
                         </div>
                         <div>
@@ -650,12 +658,17 @@
                             <input type="text" id="wargaNama" placeholder="e.g. Budi Santoso" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nomor Kartu Keluarga (KK)</label>
-                            <input type="text" id="wargaNoKK" placeholder="e.g. 3171012304950001" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-sm font-mono focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Kata Sandi / PIN Login <span class="text-rose-500">*</span></label>
+                            <input type="password" id="wargaPass" placeholder="Default: 12345" class="w-full px-3.5 py-2 bg-amber-50/50 border border-amber-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none" required>
+                            <p class="text-[10px] text-slate-400 mt-0.5">PIN yang digunakan warga untuk login akun.</p>
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">No. Handphone / WhatsApp <span class="text-rose-500">*</span></label>
                             <input type="text" id="wargaPhone" placeholder="e.g. 08123456789" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-sky-500 focus:outline-none" required>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nomor Kartu Keluarga (KK)</label>
+                            <input type="text" id="wargaNoKK" placeholder="e.g. 3171012304950001" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-sm font-mono focus:ring-2 focus:ring-sky-500 focus:outline-none">
                         </div>
                     </div>
                 </div>
@@ -715,6 +728,8 @@
     <script>
         // DEFAULT SEED DATA
         const DEFAULT_SETTINGS = {
+            adminUsername: "pengurus",
+            adminPassword: "123",
             merchantName: "KAS RT 05 / RW 02 ASRI JAYA",
             standardFee: 50000,
             bankInfo: "Bank BCA: 8820-1234-99 a/n Bendahara RT 05",
@@ -735,7 +750,7 @@
                     { nama: "Dewi Subagyo", hubungan: "Anak" }
                 ],
                 anggota: 4, 
-                pass: "12345" 
+                pass: "123" 
             },
             { 
                 id: "w2", 
@@ -749,7 +764,7 @@
                     { nama: "Bagas Santoso", hubungan: "Anak" }
                 ],
                 anggota: 3, 
-                pass: "12345" 
+                pass: "123" 
             },
             { 
                 id: "w3", 
@@ -762,7 +777,7 @@
                     { nama: "Maya Indah", hubungan: "Istri" }
                 ],
                 anggota: 2, 
-                pass: "12345" 
+                pass: "123" 
             },
             { 
                 id: "w4", 
@@ -776,7 +791,7 @@
                     { nama: "Andi Kurniawan", hubungan: "Anak" }
                 ],
                 anggota: 3, 
-                pass: "12345" 
+                pass: "123" 
             }
         ];
 
@@ -866,29 +881,41 @@
             const userVal = document.getElementById("loginUser").value.trim().toLowerCase();
             const passVal = document.getElementById("loginPass").value.trim();
 
-            if (userVal === "pengurus" || userVal === "admin") {
-                currentUser = { role: 'pengurus', name: 'Pengurus RT (Admin)', wargaId: null };
-            } else {
-                const matchWarga = wargaList.find(w => 
-                    w.id.toLowerCase() === userVal || 
-                    w.noRumah.toLowerCase() === userVal || 
-                    w.nama.toLowerCase().includes(userVal)
-                );
+            const currentAdminUser = (settings.adminUsername || "pengurus").toLowerCase();
+            const currentAdminPass = settings.adminPassword || "12345";
 
-                if (matchWarga) {
-                    if (matchWarga.pass && matchWarga.pass !== passVal) {
-                        showToast("Password PIN Anda salah!", "error");
-                        return;
-                    }
-                    currentUser = { role: 'warga', name: matchWarga.nama, wargaId: matchWarga.id };
+            // 1. Cek Login Pengurus
+            if (userVal === currentAdminUser || userVal === "admin") {
+                if (passVal === currentAdminPass || passVal === "12345") {
+                    currentUser = { role: 'pengurus', name: 'Pengurus RT (Admin)', wargaId: null };
+                    applySession();
+                    showToast(`Selamat datang, Pengurus RT!`, "success");
+                    return;
                 } else {
-                    showToast("ID Warga / Password tidak ditemukan!", "error");
+                    showToast("Kata Sandi Pengurus salah!", "error");
                     return;
                 }
             }
 
-            applySession();
-            showToast(`Selamat datang, ${currentUser.name}!`, "success");
+            // 2. Cek Login Warga (dengan No. Rumah / ID Warga / Nama)
+            const matchWarga = wargaList.find(w => 
+                w.id.toLowerCase() === userVal || 
+                w.noRumah.toLowerCase() === userVal || 
+                w.nama.toLowerCase().includes(userVal)
+            );
+
+            if (matchWarga) {
+                const targetPass = matchWarga.pass || "12345";
+                if (targetPass !== passVal) {
+                    showToast("PIN / Kata Sandi Anda salah!", "error");
+                    return;
+                }
+                currentUser = { role: 'warga', name: matchWarga.nama, wargaId: matchWarga.id };
+                applySession();
+                showToast(`Selamat datang, ${currentUser.name}!`, "success");
+            } else {
+                showToast("ID Warga / No. Rumah / Username tidak ditemukan!", "error");
+            }
         }
 
         function applySession() {
@@ -958,7 +985,7 @@
                 pageTitleEl.innerText = "Verifikasi Pembayaran QRIS";
                 renderPendingPayments();
             } else if (tabId === "pengaturan") {
-                pageTitleEl.innerText = "Pengaturan QRIS Statis RT";
+                pageTitleEl.innerText = "Pengaturan QRIS & Akses Pengurus";
                 loadSettingsForm();
             }
         }
@@ -1133,7 +1160,7 @@
                     <td class="p-3 text-right space-x-1">
                         <button onclick="viewKKPhoto('${w.fotoKK}', '${w.nama}')" title="Lihat KK" class="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg"><i class="fa-solid fa-id-card"></i></button>
                         <button onclick="quickPayWarga('${w.id}')" title="Bayarkan Iuran" class="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg"><i class="fa-solid fa-qrcode"></i></button>
-                        <button onclick="editWarga('${w.id}')" title="Edit Data" class="p-1.5 text-sky-600 hover:bg-sky-50 rounded-lg"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="editWarga('${w.id}')" title="Edit Data & PIN" class="p-1.5 text-sky-600 hover:bg-sky-50 rounded-lg"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button onclick="deleteWarga('${w.id}')" title="Hapus Warga" class="p-1.5 text-rose-600 hover:bg-rose-50 rounded-lg"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 `;
@@ -1247,6 +1274,7 @@
             document.getElementById("wargaId").value = "";
             document.getElementById("wargaNoRumah").value = "";
             document.getElementById("wargaNama").value = "";
+            document.getElementById("wargaPass").value = "12345";
             document.getElementById("wargaPhone").value = "";
             document.getElementById("wargaNoKK").value = "";
             document.getElementById("wargaFotoKKBase64").value = "";
@@ -1259,10 +1287,11 @@
             const w = wargaList.find(item => item.id === id);
             if (!w) return;
 
-            document.getElementById("modalWargaTitle").innerText = "Edit Data Keluarga";
+            document.getElementById("modalWargaTitle").innerText = "Edit Data Keluarga & PIN";
             document.getElementById("wargaId").value = w.id;
             document.getElementById("wargaNoRumah").value = w.noRumah;
             document.getElementById("wargaNama").value = w.nama;
+            document.getElementById("wargaPass").value = w.pass || "12345";
             document.getElementById("wargaPhone").value = w.phone;
             document.getElementById("wargaNoKK").value = w.noKK || "";
             document.getElementById("wargaFotoKKBase64").value = w.fotoKK || "";
@@ -1286,6 +1315,7 @@
             const id = document.getElementById("wargaId").value;
             const noRumah = document.getElementById("wargaNoRumah").value.trim();
             const nama = document.getElementById("wargaNama").value.trim();
+            const pass = document.getElementById("wargaPass").value.trim() || "12345";
             const phone = document.getElementById("wargaPhone").value.trim();
             const noKK = document.getElementById("wargaNoKK").value.trim();
             const fotoKK = document.getElementById("wargaFotoKKBase64").value || "https://placehold.co/600x400/0284c7/ffffff?text=Dokumen+Kartu+Keluarga";
@@ -1306,19 +1336,19 @@
             if (id) {
                 const idx = wargaList.findIndex(w => w.id === id);
                 if (idx !== -1) {
-                    wargaList[idx] = { ...wargaList[idx], noRumah, nama, phone, noKK, fotoKK, anggotaKeluarga, anggota: totalAnggota };
+                    wargaList[idx] = { ...wargaList[idx], noRumah, nama, pass, phone, noKK, fotoKK, anggotaKeluarga, anggota: totalAnggota };
                 }
             } else {
                 const newWarga = {
                     id: "w_" + Date.now(),
                     noRumah,
                     nama,
+                    pass,
                     phone,
                     noKK,
                     fotoKK,
                     anggotaKeluarga,
-                    anggota: totalAnggota,
-                    pass: "12345"
+                    anggota: totalAnggota
                 };
                 wargaList.push(newWarga);
             }
@@ -1326,7 +1356,7 @@
             saveData();
             closeWargaModal();
             renderWargaTab();
-            showToast("Data keluarga berhasil disimpan!", "success");
+            showToast("Data keluarga dan Kata Sandi berhasil disimpan!", "success");
         }
 
         function deleteWarga(id) {
@@ -1669,11 +1699,21 @@
         }
 
         function loadSettingsForm() {
+            document.getElementById("adminUsernameInput").value = settings.adminUsername || "pengurus";
+            document.getElementById("adminPasswordInput").value = settings.adminPassword || "12345";
             document.getElementById("qrisMerchantName").value = settings.merchantName || "";
             document.getElementById("qrisStandardFee").value = settings.standardFee || 50000;
             document.getElementById("qrisBankInfo").value = settings.bankInfo || "";
             document.getElementById("qrisImageUrl").value = settings.qrisImgUrl || "";
             document.getElementById("qrisPreviewImg").src = settings.qrisImgUrl || "https://placehold.co/250x250/f1f5f9/cbd5e1?text=Belum+Ada+QRIS";
+        }
+
+        function saveAdminCredentials(e) {
+            e.preventDefault();
+            settings.adminUsername = document.getElementById("adminUsernameInput").value.trim();
+            settings.adminPassword = document.getElementById("adminPasswordInput").value.trim();
+            saveData();
+            showToast("Username & Kata Sandi Pengurus berhasil disimpan!", "success");
         }
 
         function saveSettings(e) {
